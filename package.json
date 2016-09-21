@@ -19,5 +19,10 @@
     "json"
   ],
   "author": "Julius <juliuscebreros@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-config-cloudhouse": "^1.0.1"
+  }
 }
