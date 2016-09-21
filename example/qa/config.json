@@ -1,0 +1,4 @@
+{
+  "db": "postgres:me:me@somewhere.com:5432/postgres_db",
+  "secretKey": "secretKey"
+}
