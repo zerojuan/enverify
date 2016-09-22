@@ -75,7 +75,7 @@ describe( 'Consistent Properties', () => {
         failures[ 0 ].should.have.property( 'extra' );
     } );
 
-    it( 'should ignore nullable property', () => {
+    it( 'should ignore optional property', () => {
         const data = [
             {
                 'id': '/x',
@@ -102,7 +102,7 @@ describe( 'Consistent Properties', () => {
         ];
 
         // only secret is required
-        const failures = verify.consistentProperties( data, { nullable: [ 'db', 'key' ] } );
+        const failures = verify.consistentProperties( data, { optional: [ 'db', 'key' ] } );
         failures.length.should.equal( 0 );
     } );
 } );
