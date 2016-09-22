@@ -10,6 +10,7 @@
 require( 'should' ); // eslint-disable-line
 
 const verify = require( '../lib/verify' );
+const reporter = require( '../lib/reporter' );
 
 describe( 'No Duplicates', () => {
     it( 'should return no failures if there are no duplicates', () => {
@@ -71,6 +72,7 @@ describe( 'No Duplicates', () => {
             ];
             const failures = verify.noDuplicates( data );
             failures.length.should.equal( 2 );
+            reporter.printDuplicates( failures );
         } );
 
         it( 'should return the property and id of the failing config', () => {

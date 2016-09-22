@@ -10,6 +10,7 @@
 require( 'should' ); // eslint-disable-line
 
 const verify = require( '../lib/verify' );
+const reporter = require( '../lib/reporter' );
 
 describe( 'Consistent Properties', () => {
     it( 'should return no failures if all properties match', () => {
@@ -73,5 +74,6 @@ describe( 'Consistent Properties', () => {
         failures[ 0 ].should.have.property( 'id' );
         failures[ 0 ].should.have.property( 'missing' );
         failures[ 0 ].should.have.property( 'extra' );
+        reporter.printInconsistencies( failures );
     } );
 } );
