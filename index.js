@@ -25,5 +25,7 @@ loader( path, opts, ( err, configData ) => {
 process.on( 'exit', ( code ) => {
     if ( code ) {
         console.error( 'Failed' );
+    } else {
+        console.log( 'Success' );
     }
 } );
