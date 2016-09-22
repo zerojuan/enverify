@@ -1,17 +1,17 @@
 {
-  "name": "verify-env-config",
+  "name": "enverify",
   "version": "0.0.1",
   "description": "Validates environment configs accross directories",
   "main": "index.js",
   "bin": {
-    "verify-env": "./index.js"
+    "enverify": "./index.js"
   },
   "scripts": {
     "test": "mocha test/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zerojuan/verify-env-config.git"
+    "url": "https://github.com/zerojuan/enverify.git"
   },
   "keywords": [
     "build",
