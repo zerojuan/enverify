@@ -10,7 +10,6 @@
 require( 'should' ); // eslint-disable-line
 
 const verify = require( '../lib/verify' );
-const reporter = require( '../lib/reporter' );
 
 describe( 'No Duplicates', () => {
     it( 'should return no failures if there are no duplicates', () => {
@@ -39,6 +38,30 @@ describe( 'No Duplicates', () => {
         ];
 
         const failures = verify.noDuplicates( data );
+        failures.length.should.equal( 0 );
+    } );
+
+    it( 'should accept duplicable properties', () => {
+        const data = [
+            {
+                'id': '/x',
+                'data': {
+                    'db': 'db-conf',
+                    'key': 'db-key',
+                    'secret': 'db-secret'
+                }
+            },
+            {
+                'id': '/y',
+                'data': {
+                    'db': 'db-conf',
+                    'key': 'db-key',
+                    'secret': 'db-secret'
+                }
+            }
+        ];
+
+        const failures = verify.noDuplicates( data, { duplicable: [ 'db', 'key', 'secret' ] } );
         failures.length.should.equal( 0 );
     } );
 
@@ -72,7 +95,6 @@ describe( 'No Duplicates', () => {
             ];
             const failures = verify.noDuplicates( data );
             failures.length.should.equal( 2 );
-            reporter.printDuplicates( failures );
         } );
 
         it( 'should return the property and id of the failing config', () => {

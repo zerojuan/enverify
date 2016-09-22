@@ -10,7 +10,6 @@
 require( 'should' ); // eslint-disable-line
 
 const verify = require( '../lib/verify' );
-const reporter = require( '../lib/reporter' );
 
 describe( 'Consistent Properties', () => {
     it( 'should return no failures if all properties match', () => {
@@ -74,6 +73,36 @@ describe( 'Consistent Properties', () => {
         failures[ 0 ].should.have.property( 'id' );
         failures[ 0 ].should.have.property( 'missing' );
         failures[ 0 ].should.have.property( 'extra' );
-        reporter.printInconsistencies( failures );
+    } );
+
+    it( 'should ignore nullable property', () => {
+        const data = [
+            {
+                'id': '/x',
+                'data': {
+                    'db': 'db-conf',
+                    'secret': 'db-secret'
+                }
+            },
+            {
+                'id': '/y',
+                'data': {
+                    'db': 'db-conf',
+                    'key': 'db-key',
+                    'secret': 'db-secret'
+                }
+            },
+            {
+                'id': '/z',
+                'data': {
+                    'key': 'db-key',
+                    'secret': 'db-secret'
+                }
+            }
+        ];
+
+        // only secret is required
+        const failures = verify.consistentProperties( data, { nullable: [ 'db', 'key' ] } );
+        failures.length.should.equal( 0 );
     } );
 } );
