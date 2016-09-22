@@ -1,3 +1,6 @@
 {
-  "extends": [ "airbnb-base", "cloudhouse" ]
+  "extends": [ "airbnb-base", "cloudhouse" ],
+  "rules": {
+        "no-console": [ "error", { "allow": [ "log", "error" ]} ]
+  }
 }

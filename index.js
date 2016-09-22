@@ -19,7 +19,7 @@ loader( path, opts, ( err, configData ) => {
         return process.exit( 1 );
     }
 
-    verify( configData, opts );
+    return verify( configData, opts );
 } );
 
 process.on( 'exit', ( code ) => {
