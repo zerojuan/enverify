@@ -2,6 +2,7 @@
   "db": "postgres:me:me@somewhere.com:5432/postgres_db",
   "secretKey": "secretKey",
   "id": {
-        "some": "1"
+        "some": "1",
+        "array": [ "some", "some"]
       }
 }
